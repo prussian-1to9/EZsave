@@ -11,3 +11,16 @@ This directory contains documents for setting up a (local) development environme
 │
 └── README.md   # current file
 ```
+
+---
+
+## global requirements
+
+## for BE
+
+- node js : 20.10.0 LTS
+  - npm : 10.8.2
+  - \[optional\] npx : typescript, eslint for init & execution
+    ```shell
+    npm install -g npx
+    ```
