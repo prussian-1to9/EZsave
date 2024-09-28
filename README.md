@@ -1,11 +1,27 @@
 # EZsave doc
 
 'EZsave' 어플리케이션의 문서를 위한 브랜치입니다.
-This branch is for documents of 'EZsave' application.
+This branch is for documents of the 'EZsave' application.
 
-## Databases
-- `EZsave.vuered.json`
-    - VSCode extension 'ERD Editor'를 통해 작성한 문서입니다.
-    - 동일 내용을 [ERD Cloud](https://www.erdcloud.com/d/B59a9uAid2PoZQMH9)에도 작성하였으니, 외부 환경에서는 이쪽 링크를 참조 부탁드립니다.
-    - written for VS Code extension 'ERD Editor'.
-    - please check [ERD Cloud](https://www.erdcloud.com/d/B59a9uAid2PoZQMH9) if you want to access other than VS Code (or without extension).
+```shell
+/
+│
+├── client/     # documents for 'client' branch will come.
+├── server/     # documents for 'server' branch will come
+├── dev/        # documents for setting up (local) development env.
+│   └── databases/
+│
+└── README.md   # current file
+```
+
+## commit messages
+
+| heading | 설명                          | description                             |
+| :-----: | :---------------------------- | :-------------------------------------- |
+|  `DOC`  | 문서 파일 관련 작업 시        | For changes related to document files   |
+| `FEAT`  | 신규 파일등록, 기능 변경&개발 | For adding new files or feature changes |
+| `STYLE` | 스타일 변경 작업 시           | For changes related to style            |
+|  `FIX`  | 오류 수정                     | For fixing bugs                         |
+|  `REF`  | 리팩토링, 주석 보완           | For refactoring and improving comments  |
+|  `DEL`  | 문서/ 코드 삭제 시            | For deleting documents or code          |
+|  `TXT`  | 단순문구, 오타수정            | For simple text changes or typos        |
