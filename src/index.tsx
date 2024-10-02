@@ -1,14 +1,11 @@
-import * as _ from "lodash";
+import React from "react";
+import { createRoot } from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 
-function component() {
-  const element = document.createElement("div");
+import App from "./components/App";
 
-  element.innerHTML = _.join(["Hello", "world"], " ");
-
-  return element;
-}
-
-document.body.appendChild(component());
+// render component (react version: 18.3.1)
+const body = document.body;
+createRoot(body).render(<App />);
 
 reportWebVitals(console.log);
