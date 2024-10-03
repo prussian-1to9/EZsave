@@ -1,87 +1,71 @@
-import React from 'react';
-import styled from 'styled-components'
-import { Flex, Layout } from 'antd';
+import React, { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { Layout, ConfigProvider, Flex } from "antd";
+import { Route, Routes } from "react-router-dom";
 
-const { Header, Footer, Sider, Content } = Layout;
+import RegisterPage from "./forms/RegisterForm";
+import LogoContainer from "./LogoContainer";
+import EZsaveDark from "@assets/EZsave-dark.svg";
+import EZsaveLight from "@assets/EZsave-light.svg";
 
-const StyledHeader = styled(Header)`
-  text-align: center;
-  color: #fff;
-  height: 64px;
-  padding-inline: 48px;
-  line-height: 64px;
-  background-color: #4096ff;
-`;
-const StyledContent = styled(Content)`
-  text-align: center;
-  min-height: 120px;
-  line-height: 120px;
-  color: #fff;
-  background-color: #0958d9;
-`;
+// primary : buttons, links, etc.
+const THEMES = {
+  // colors only
+  light: {
+    primaryColor: "#2d2d2d",
+    textBase: "#2d2d2d",
+    BgBase: "#ffffff",
+    logoImg: EZsaveLight,
+  },
+  dark: {
+    primaryColor: "#5f5f5f",
+    textBase: "#ffffff",
+    BgBase: "#2d2d2d",
+    logoImg: EZsaveDark,
+  },
+};
 
-const StyledSider = styled(Sider)`
-  text-align: center;
-  line-height: 120px;
-  color: #fff;
-  background-color: #1677ff;
-  width: 25%;
-`;
+const App: React.FC = () => {
+  const [theme, setTheme] = useState(THEMES.dark);
 
-const StyledFooter = styled(Footer)`
-  text-align: center;
-  color: #fff;
-  background-color: #4096ff;
-`;
+  /** @fixme should set setheme triggers */
 
-const StyledLayout = styled(Layout)`
-  border-radius: 8px;
-  overflow: hidden;
-  width: calc(50% - 8px);
-  max-width: calc(50% - 8px);
-`;
-
-const App: React.FC = () => (
-  <Flex gap="middle" wrap>
-    <StyledLayout>
-      <StyledHeader>Header</StyledHeader>
-      <StyledContent>Content</StyledContent>
-      <StyledFooter>Footer</StyledFooter>
-    </StyledLayout>
-
-    <StyledLayout>
-      <StyledHeader>Header</StyledHeader>
-      <Layout>
-        <StyledSider>
-          Sider
-        </StyledSider>
-        <StyledContent>Content</StyledContent>
-      </Layout>
-      <StyledFooter>Footer</StyledFooter>
-    </StyledLayout>
-
-    <StyledLayout>
-      <StyledHeader>Header</StyledHeader>
-      <Layout>
-        <StyledContent>Content</StyledContent>
-        <StyledSider>
-          Sider
-        </StyledSider>
-      </Layout>
-      <StyledFooter>Footer</StyledFooter>
-    </StyledLayout>
-
-    <StyledLayout>
-      <StyledSider>
-        Sider
-      </StyledSider>
-      <Layout>
-        <StyledHeader>Header</StyledHeader>
-        <StyledContent>Content</StyledContent>
-        <StyledFooter>Footer</StyledFooter>
-      </Layout>
-    </StyledLayout>
-  </Flex>
-);
+  return (
+    <ThemeProvider theme={theme}>
+      <ConfigProvider
+        theme={{
+          components: {
+            Button: {
+              primaryShadow: "none",
+              fontWeight: 600,
+            },
+          },
+          token: {
+            colorPrimary: theme.primaryColor,
+            colorPrimaryBg: "#22ddff",
+            fontWeightStrong: 700,
+            colorTextBase: theme.textBase,
+            colorTextHeading: theme.textBase,
+            colorBgBase: theme.BgBase,
+          },
+        }}
+      >
+        <Layout>
+          <Flex
+            vertical={true}
+            justify="center"
+            align="center"
+            style={{ minHeight: "100vh" }}
+          >
+            <LogoContainer logoImg={theme.logoImg} />
+            <Routes>
+              <Route path="/" element={<RegisterPage />} />
+            </Routes>
+          </Flex>
+        </Layout>
+      </ConfigProvider>
+    </ThemeProvider>
+  );
+};
 
 export default App;

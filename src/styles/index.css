@@ -1,0 +1,19 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+}
+
+body {
+  margin: 0;
+}
+
+@media screen and (max-width: 944px) {
+  html {
+    font-size: 16px;
+  }
+}

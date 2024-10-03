@@ -15,6 +15,10 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
+      "@types": path.resolve(__dirname, "types/"),
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@styles": path.resolve(__dirname, "src/styles/"),
+      "@assets": path.resolve(__dirname, "src/assets/"),
       Types: path.resolve(__dirname, "src/types/"),
     },
   },
@@ -28,6 +32,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack", "url-loader"],
       },
     ],
   },
