@@ -5,11 +5,19 @@
 
 html {
   font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
   font-size: 24px;
 }
 
 body {
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-weight: 600;
+  outline: none;
 }
 
 @media screen and (max-width: 944px) {

@@ -10,9 +10,7 @@ import App from "@components/App";
 const body = document.body;
 createRoot(body).render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
+    <App />
   </BrowserRouter>
 );
 
