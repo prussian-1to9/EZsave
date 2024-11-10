@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Rule } from "antd/es/form";
-import { Form, Input, Button } from "antd";
+import { Form, Button } from "antd";
+
+import EZInput from "../EZInput";
 
 const { Item } = Form;
 
-const StyledForm = styled(Form)`
+const FormContainer = styled(Form)`
   width: 60%;
   max-width: 750px;
-  padding: 24px;
+  padding: 24px 0;
 `;
 
 const validationRules: { [key: string]: Rule[] } = {
@@ -52,17 +54,31 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <StyledForm
+    <FormContainer
       name="register"
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
       <Item name="email" rules={validationRules.email}>
-        <Input placeholder="ID@ez.save" />
+        <EZInput
+          type="text"
+          name="email"
+          placeholder="ID@ez.save"
+          onChange={(e) => {
+            console.log(e.target.value); /** @FIXME */
+          }}
+        />
       </Item>
       <Item name="password" rules={validationRules.password}>
-        <Input.Password placeholder="password" />
+        <EZInput
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={(e) => {
+            console.log(e.target.value); /** @FIXME */
+          }}
+        ></EZInput>
       </Item>
       <Item>
         <Button
@@ -75,7 +91,7 @@ const RegisterPage: React.FC = () => {
           로그인
         </Button>
       </Item>
-    </StyledForm>
+    </FormContainer>
   );
 };
 
