@@ -52,10 +52,11 @@ module.exports = {
       { directory: path.join(__dirname, "dist") },
       { directory: path.join(__dirname, "public") },
     ],
+    historyApiFallback: true,
     compress: true,
     port: 8080,
   },
   watchOptions: {
-    ignored: /node_modules/,
+    ignored: "/node_modules/",
   },
 };

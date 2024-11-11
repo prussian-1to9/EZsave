@@ -7,6 +7,7 @@ import useViewPort from "./Viewport";
 import THEMES from "../constants/themes";
 
 import RegisterPage from "../pages/RegisterPage";
+import CalendarPage from "../pages/CalendarPage";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,7 +29,7 @@ const App: React.FC = () => {
         <Route path="/" element={<RegisterPage logoImg={theme.logoImg} />} />
         <Route
           path="/dashboard"
-          element={<div>Dashboard main - calendar</div>}
+          element={<CalendarPage logoImg={theme.logoImg} />}
         />
         <Route path="*" element={<div>404</div>} />
       </Routes>

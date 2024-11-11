@@ -19,9 +19,3 @@ button {
   font-weight: 600;
   outline: none;
 }
-
-@media screen and (max-width: 944px) {
-  html {
-    font-size: 16px;
-  }
-}
