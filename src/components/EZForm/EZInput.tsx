@@ -30,7 +30,7 @@ const StyledInputContainer = styled.div`
   border-radius: 6px;
   transition: all 0.2s;
 
-  &:focus {
+  &:focus-within {
     box-shadow: 0 0 5px 5px #5f5f5f;
   }
 `;

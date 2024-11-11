@@ -54,7 +54,7 @@ const RegisterPage: React.FC = () => {
           name="email"
           placeholder="ID@ez.save"
           onChange={(e) => {
-            console.log(e.target.value); /** @FIXME */
+            const email = e.target.value; /** @FIXME */
           }}
         />
       </Form.Item>
@@ -64,7 +64,7 @@ const RegisterPage: React.FC = () => {
           name="password"
           placeholder="password"
           onChange={(e) => {
-            console.log(e.target.value); /** @FIXME */
+            const password = e.target.value; /** @FIXME */
           }}
         ></EZInput>
       </Form.Item>
