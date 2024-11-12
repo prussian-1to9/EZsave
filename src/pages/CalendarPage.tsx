@@ -2,20 +2,24 @@ import React from "react";
 //import EZContainer from "@components/EZContainer";
 import EZLogoContainer from "@components/EZLogoContainer";
 
-import moment from "moment";
 import styled from "styled-components";
 import { media } from "@styles/media";
 import EZMenu from "@components/EZMenu/EZMenu";
+import data from "../constants/Mock";
 
 const CalendarDay = styled.div`
   display: flex;
+  flex-direction: column;
   height: 150px;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 10px;
-  border-right: 1px solid #5f5f5f;
+  border-left: 1px solid #5f5f5f;
   border-bottom: 1px solid #5f5f5f;
   font-size: 0.7rem;
 
+  &:last-child {
+    border-right: 1px solid #5f5f5f;
+  }
   ${media.tablet`
     width: 100%;
     min-height: 75px;
@@ -42,21 +46,44 @@ const CalendarContainer = styled.div`
   `}
 `;
 
+const HistoryBar = styled.div`
+  text-align: right;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+`;
+const CalendarHistoryBar = ({
+  type,
+  predicted = false,
+  children,
+}: {
+  type: "in" | "out";
+  predicted?: true | false | undefined;
+  children: React.ReactNode;
+}) => {
+  let backgroundColor = "#5f5f5f";
+  const color = type === "in" ? "#3642B4" : "#CF2929";
+
+  // background-color: opacity 20%
+  if (!predicted || predicted === undefined) {
+    backgroundColor = color + "33";
+  }
+
+  return (
+    <HistoryBar style={{ backgroundColor: backgroundColor, color: color }}>
+      {children}
+    </HistoryBar>
+  );
+};
+
 const CalendarPage = ({ logoImg }: { logoImg: string }) => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = React.useState(today);
 
-  // 이번 달 모든 일자 배열로 만들기
-  /** @FIXME : BE API로 날짜, 내역 불러올 수 있도록 */
-  const getDaysArray = (year: number, month: number) => {
-    const daysInMonth = moment(`${year}-${month}`, "YYYY-MM").daysInMonth();
-    const arr = [];
-    for (let i = 1; i <= daysInMonth; i++) {
-      arr.push(i);
-    }
-    return arr;
+  const formatNumber = (num: number) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
   return (
     <>
       <EZLogoContainer logoImg={logoImg} type="header" />
@@ -64,12 +91,25 @@ const CalendarPage = ({ logoImg }: { logoImg: string }) => {
         <EZMenu />
 
         <CalendarContainer>
-          {getDaysArray(
-            selectedDate.getFullYear(),
-            selectedDate.getMonth() + 1
-          ).map((day) => (
-            <CalendarDay key={day}>{day}</CalendarDay>
-          ))}
+          {data.real.map((item) => {
+            return (
+              <CalendarDay key={item.date}>
+                {Number(item.date.slice(-2))}
+                <div>
+                  {item.in > 0 && (
+                    <CalendarHistoryBar type="in">
+                      {formatNumber(item.in)}₩
+                    </CalendarHistoryBar>
+                  )}
+                  {item.out > 0 && (
+                    <CalendarHistoryBar type="out">
+                      {formatNumber(item.out)}₩
+                    </CalendarHistoryBar>
+                  )}
+                </div>
+              </CalendarDay>
+            );
+          })}
         </CalendarContainer>
       </div>
     </>

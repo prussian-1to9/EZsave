@@ -31,7 +31,6 @@ const Menu = styled(Link)`
   align-items: center;
   padding: 10px;
 
-  border-right: 1px solid #5f5f5f;
   border-bottom: 1px solid #5f5f5f;
   font-size: 0.7rem;
   color: ${({ theme }) => theme.fontColor ?? "#2d2d2d"};
