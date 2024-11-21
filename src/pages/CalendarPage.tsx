@@ -1,11 +1,11 @@
 import React from "react";
-//import EZContainer from "@components/EZContainer";
+//import Container from "@components/Container";
 import EZLogoContainer from "@components/EZLogoContainer";
 
 import styled from "styled-components";
 import { media } from "@styles/media";
 import EZMenu from "@components/EZMenu/EZMenu";
-import data from "../constants/Mock";
+import data from "../api/Mock";
 
 const CalendarDay = styled.div`
   display: flex;
