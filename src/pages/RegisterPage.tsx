@@ -1,17 +1,22 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useOutletContext } from "react-router-dom";
 
-import RegisterForm from "@components/EZForm/RegisterForm";
+import FormContainer from "@components/Form/FormContainer";
+
+import RegisterForm from "@components/Form/RegisterForm";
 import Container from "@components/Container";
 import EZLogoContainer from "@components/EZLogoContainer";
 
-const RegisterPage = ({ logoImg }: { logoImg: string }) => {
+const RegisterPage = () => {
+  const { theme }: { theme: EZTheme } = useOutletContext();
   return (
     <Container>
-      <EZLogoContainer logoImg={logoImg} />
-      <Routes>
-        <Route index element={<RegisterForm />} />
-      </Routes>
+      <FormContainer>
+        <EZLogoContainer theme={theme} />
+        <Routes>
+          <Route index element={<RegisterForm />} />
+        </Routes>
+      </FormContainer>
     </Container>
   );
 };

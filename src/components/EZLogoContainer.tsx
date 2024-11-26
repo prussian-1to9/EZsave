@@ -11,21 +11,21 @@ const EZLogo = styled.img`
 `;
 
 const EZLogoContainer = ({
-  logoImg,
   type = "main",
+  theme,
 }: {
-  logoImg: string;
   type?: string | undefined;
+  theme: EZTheme;
 }) => (
   <>
     {type === "header" ? (
       <HeaderContainer to="/dashboard">
-        <EZLogo src={logoImg} alt="EZsave" />
+        <EZLogo src={theme.logoImg} alt="EZsave" />
         <EZTitle>EZsave</EZTitle>
       </HeaderContainer>
     ) : (
       <LogoContainer to="/">
-        <EZLogo src={logoImg} alt="EZsave" />
+        <EZLogo src={theme.logoImg} alt="EZsave" />
         <EZTitle>EZsave</EZTitle>
       </LogoContainer>
     )}

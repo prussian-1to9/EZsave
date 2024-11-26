@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import useViewPort from "./Viewport";
+import "@styles/App.css";
 
 import THEMES from "../constants/themes";
-
-import RegisterPage from "../pages/RegisterPage";
-import CalendarPage from "../pages/CalendarPage";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,14 +23,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Routes>
-        <Route path="/" element={<RegisterPage logoImg={theme.logoImg} />} />
-        <Route
-          path="/dashboard"
-          element={<CalendarPage logoImg={theme.logoImg} />}
-        />
-        <Route path="*" element={<div>404</div>} />
-      </Routes>
+      <Outlet context={{ theme }} />
     </ThemeProvider>
   );
 };

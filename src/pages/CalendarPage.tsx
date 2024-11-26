@@ -1,4 +1,5 @@
 import React from "react";
+import { useOutletContext } from "react-router-dom";
 //import Container from "@components/Container";
 import EZLogoContainer from "@components/EZLogoContainer";
 
@@ -77,16 +78,17 @@ const CalendarHistoryBar = ({
   );
 };
 
-const CalendarPage = ({ logoImg }: { logoImg: string }) => {
+const CalendarPage = () => {
   const today = new Date();
   const [selectedDate, setSelectedDate] = React.useState(today);
+  const theme: EZTheme = useOutletContext();
 
   const formatNumber = (num: number) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
     <>
-      <EZLogoContainer logoImg={logoImg} type="header" />
+      <EZLogoContainer theme={theme} type="header" />
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         <EZMenu />
 

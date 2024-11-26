@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 const FormContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
 `;
 
 export default FormContainer;
